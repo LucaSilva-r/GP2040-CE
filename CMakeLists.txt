@@ -274,6 +274,7 @@ src/animationstation/effects/customthemepressed.cpp
 src/animationstation/effects/rainbow.cpp
 src/animationstation/effects/staticcolor.cpp
 src/animationstation/effects/statictheme.cpp
+src/addons/piezo.cpp
 ${PROTO_OUTPUT_DIR}/enums.pb.c
 ${PROTO_OUTPUT_DIR}/config.pb.c
 )

@@ -61,6 +61,7 @@ import HETrigger, {
 	HETriggerScheme,
 	HETriggerState,
 } from '../Addons/HETrigger';
+import Piezo, { piezoState } from '../Addons/Piezo';
 
 export type AddonPropTypes = {
 	values: typeof DEFAULT_VALUES;
@@ -94,6 +95,7 @@ const schema = yup.object().shape({
 });
 
 export const DEFAULT_VALUES = {
+	...piezoState,
 	...analogState,
 	...analog1256State,
 	...bootselState,
@@ -119,6 +121,7 @@ export const DEFAULT_VALUES = {
 } as const;
 
 const ADDONS = [
+	Piezo,
 	Bootsel,
 	OnBoardLed,
 	Analog,

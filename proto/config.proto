@@ -884,6 +884,34 @@ message HETriggerOptions
     optional int32 smoothingFactor = 13;
 }
 
+message PiezoOptions
+{
+    optional bool enabled = 1;
+
+    optional int32 analogAdc1PinX = 2;
+    optional int32 analogAdc1PinY = 3;
+    optional bool forced_circularity = 4;
+    optional uint32 inner_deadzone = 5;
+    optional int32 analogAdc2PinX = 6;
+    optional int32 analogAdc2PinY = 7;
+    optional DpadMode analogAdc1Mode = 8;
+    optional DpadMode analogAdc2Mode = 9;
+    optional InvertMode analogAdc1Invert = 10;
+    optional InvertMode analogAdc2Invert = 11;
+    optional bool auto_calibrate = 12;
+    optional uint32 outer_deadzone = 13;
+    optional bool analog_smoothing = 14;
+    optional float smoothing_factor = 15;
+    optional uint32 analog_error = 16;
+    optional bool analog_smoothing2 = 17;
+    optional float smoothing_factor2 = 18;
+    optional uint32 analog_error2 = 19;
+    optional uint32 inner_deadzone2 = 20;
+    optional uint32 outer_deadzone2 = 21;
+    optional bool auto_calibrate2 = 22;
+    optional bool forced_circularity2 = 23;
+}
+
 message AddonOptions
 {
     optional BootselButtonOptions bootselButtonOptions = 1;
@@ -916,6 +944,8 @@ message AddonOptions
     optional GamepadUSBHostOptions gamepadUSBHostOptions = 28;
     optional TG16Options tg16Options = 29;
     optional HETriggerOptions heTriggerOptions = 30;
+    optional PiezoOptions piezoOptions = 31;
+
 }
 
 message MigrationHistory
