@@ -36,7 +36,7 @@
 
 #define PATH_CGI_ACTION "/cgi/action"
 
-#define LWIP_HTTPD_POST_MAX_PAYLOAD_LEN (1024 * 16)
+#define LWIP_HTTPD_POST_MAX_PAYLOAD_LEN (1024 * 24)
 
 extern struct fsdata_file file__index_html[];
 
@@ -1873,6 +1873,29 @@ std::string setAddonOptions()
     docToValue(heTriggerOptions.emaSmoothing, doc, "heTriggerSmoothing");
     docToValue(heTriggerOptions.smoothingFactor, doc, "heTriggerSmoothingFactor");
 
+    TaikoAddonOptions& taikoAddonOptions = Storage::getInstance().getAddonOptions().taikoAddonOptions;
+    docToValue(taikoAddonOptions.enabled, doc, "TaikoEnabled");
+    docToPin(taikoAddonOptions.sensor1Pin, doc, "sensor1Pin");
+    docToPin(taikoAddonOptions.sensor2Pin, doc, "sensor2Pin");
+    docToPin(taikoAddonOptions.sensor3Pin, doc, "sensor3Pin");
+    docToPin(taikoAddonOptions.sensor4Pin, doc, "sensor4Pin");
+    docToValue(taikoAddonOptions.sensor1Button, doc, "sensor1Button");
+    docToValue(taikoAddonOptions.sensor2Button, doc, "sensor2Button");
+    docToValue(taikoAddonOptions.sensor3Button, doc, "sensor3Button");
+    docToValue(taikoAddonOptions.sensor4Button, doc, "sensor4Button");
+    docToValue(taikoAddonOptions.sensor1ThresholdLight, doc, "sensor1ThresholdLight");
+    docToValue(taikoAddonOptions.sensor2ThresholdLight, doc, "sensor2ThresholdLight");
+    docToValue(taikoAddonOptions.sensor3ThresholdLight, doc, "sensor3ThresholdLight");
+    docToValue(taikoAddonOptions.sensor4ThresholdLight, doc, "sensor4ThresholdLight");
+    docToValue(taikoAddonOptions.sensor1ThresholdHeavy, doc, "sensor1ThresholdHeavy");
+    docToValue(taikoAddonOptions.sensor2ThresholdHeavy, doc, "sensor2ThresholdHeavy");
+    docToValue(taikoAddonOptions.sensor3ThresholdHeavy, doc, "sensor3ThresholdHeavy");
+    docToValue(taikoAddonOptions.sensor4ThresholdHeavy, doc, "sensor4ThresholdHeavy");
+    docToValue(taikoAddonOptions.debounceMillis, doc, "debounceMillis");
+    docToValue(taikoAddonOptions.keyTimeoutMillis, doc, "keyTimeoutMillis");
+    docToValue(taikoAddonOptions.antiGhostingSides, doc, "antiGhostingSides");
+    docToValue(taikoAddonOptions.antiGhostingCenter, doc, "antiGhostingCenter");
+
     EventManager::getInstance().triggerEvent(new GPStorageSaveEvent(true));
 
     return serialize_json(doc);
@@ -2326,6 +2349,29 @@ std::string getAddonOptions()
     writeDoc(doc, "muxADCPin3", cleanPin(heTriggerOptions.muxADCPin3));
     writeDoc(doc, "heTriggerSmoothing", heTriggerOptions.emaSmoothing);
     writeDoc(doc, "heTriggerSmoothingFactor", heTriggerOptions.smoothingFactor);
+
+    const TaikoAddonOptions& taikoAddonOptions = Storage::getInstance().getAddonOptions().taikoAddonOptions;
+    writeDoc(doc, "TaikoEnabled", taikoAddonOptions.enabled);
+    writeDoc(doc, "sensor1Pin", cleanPin(taikoAddonOptions.sensor1Pin));
+    writeDoc(doc, "sensor2Pin", cleanPin(taikoAddonOptions.sensor2Pin));
+    writeDoc(doc, "sensor3Pin", cleanPin(taikoAddonOptions.sensor3Pin));
+    writeDoc(doc, "sensor4Pin", cleanPin(taikoAddonOptions.sensor4Pin));
+    writeDoc(doc, "sensor1Button", taikoAddonOptions.sensor1Button);
+    writeDoc(doc, "sensor2Button", taikoAddonOptions.sensor2Button);
+    writeDoc(doc, "sensor3Button", taikoAddonOptions.sensor3Button);
+    writeDoc(doc, "sensor4Button", taikoAddonOptions.sensor4Button);
+    writeDoc(doc, "sensor1ThresholdLight", taikoAddonOptions.sensor1ThresholdLight);
+    writeDoc(doc, "sensor2ThresholdLight", taikoAddonOptions.sensor2ThresholdLight);
+    writeDoc(doc, "sensor3ThresholdLight", taikoAddonOptions.sensor3ThresholdLight);
+    writeDoc(doc, "sensor4ThresholdLight", taikoAddonOptions.sensor4ThresholdLight);
+    writeDoc(doc, "sensor1ThresholdHeavy", taikoAddonOptions.sensor1ThresholdHeavy);
+    writeDoc(doc, "sensor2ThresholdHeavy", taikoAddonOptions.sensor2ThresholdHeavy);
+    writeDoc(doc, "sensor3ThresholdHeavy", taikoAddonOptions.sensor3ThresholdHeavy);
+    writeDoc(doc, "sensor4ThresholdHeavy", taikoAddonOptions.sensor4ThresholdHeavy);
+    writeDoc(doc, "debounceMillis", taikoAddonOptions.debounceMillis);
+    writeDoc(doc, "keyTimeoutMillis", taikoAddonOptions.keyTimeoutMillis);
+    writeDoc(doc, "antiGhostingSides", taikoAddonOptions.antiGhostingSides);
+    writeDoc(doc, "antiGhostingCenter", taikoAddonOptions.antiGhostingCenter);
 
     return serialize_json(doc);
 }

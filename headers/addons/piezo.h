@@ -130,7 +130,7 @@ typedef struct
     bool forced_circularity;
 } piezo_instance;
 
-class PiezoInput : public GPAddon {
+class Taiko : public GPAddon {
 public:
     virtual bool available();
     virtual void setup();       // Analog Setup
@@ -148,4 +148,4 @@ private:
     piezo_instance adc_pairs[ADC_COUNT];
 };
 
-#endif  // _Piezo_H
+#endif  // _Taiko_H

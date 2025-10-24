@@ -61,7 +61,7 @@ import HETrigger, {
 	HETriggerScheme,
 	HETriggerState,
 } from '../Addons/HETrigger';
-import Piezo, { piezoState } from '../Addons/Piezo';
+import Taiko, { taikoScheme, taikoState } from '../Addons/Taiko';
 
 export type AddonPropTypes = {
 	values: typeof DEFAULT_VALUES;
@@ -72,6 +72,7 @@ export type AddonPropTypes = {
 };
 
 const schema = yup.object().shape({
+	...taikoScheme,
 	...analogScheme,
 	...analog1256Scheme,
 	...bootselScheme,
@@ -95,7 +96,7 @@ const schema = yup.object().shape({
 });
 
 export const DEFAULT_VALUES = {
-	...piezoState,
+	...taikoState,
 	...analogState,
 	...analog1256State,
 	...bootselState,
@@ -121,7 +122,7 @@ export const DEFAULT_VALUES = {
 } as const;
 
 const ADDONS = [
-	Piezo,
+	Taiko,
 	Bootsel,
 	OnBoardLed,
 	Analog,

@@ -884,32 +884,41 @@ message HETriggerOptions
     optional int32 smoothingFactor = 13;
 }
 
-message PiezoOptions
+message TaikoAddonOptions
 {
     optional bool enabled = 1;
 
-    optional int32 analogAdc1PinX = 2;
-    optional int32 analogAdc1PinY = 3;
-    optional bool forced_circularity = 4;
-    optional uint32 inner_deadzone = 5;
-    optional int32 analogAdc2PinX = 6;
-    optional int32 analogAdc2PinY = 7;
-    optional DpadMode analogAdc1Mode = 8;
-    optional DpadMode analogAdc2Mode = 9;
-    optional InvertMode analogAdc1Invert = 10;
-    optional InvertMode analogAdc2Invert = 11;
-    optional bool auto_calibrate = 12;
-    optional uint32 outer_deadzone = 13;
-    optional bool analog_smoothing = 14;
-    optional float smoothing_factor = 15;
-    optional uint32 analog_error = 16;
-    optional bool analog_smoothing2 = 17;
-    optional float smoothing_factor2 = 18;
-    optional uint32 analog_error2 = 19;
-    optional uint32 inner_deadzone2 = 20;
-    optional uint32 outer_deadzone2 = 21;
-    optional bool auto_calibrate2 = 22;
-    optional bool forced_circularity2 = 23;
+    // Sensor ADC Pin Assignments (4 sensors)
+    optional int32 sensor1Pin = 2;
+    optional int32 sensor2Pin = 3;
+    optional int32 sensor3Pin = 4;
+    optional int32 sensor4Pin = 5;
+
+    // Button Mappings (which gamepad button each sensor triggers)
+    optional uint32 sensor1Button = 6;
+    optional uint32 sensor2Button = 7;
+    optional uint32 sensor3Button = 8;
+    optional uint32 sensor4Button = 9;
+
+    // Light Hit Thresholds (ADC values 0-4095)
+    optional uint32 sensor1ThresholdLight = 10;
+    optional uint32 sensor2ThresholdLight = 11;
+    optional uint32 sensor3ThresholdLight = 12;
+    optional uint32 sensor4ThresholdLight = 13;
+
+    // Heavy Hit Thresholds (ADC values 0-4095)
+    optional uint32 sensor1ThresholdHeavy = 14;
+    optional uint32 sensor2ThresholdHeavy = 15;
+    optional uint32 sensor3ThresholdHeavy = 16;
+    optional uint32 sensor4ThresholdHeavy = 17;
+
+    // Timing Configuration
+    optional uint32 debounceMillis = 18;      // Global debounce time in milliseconds
+    optional uint32 keyTimeoutMillis = 19;    // Key release timeout in milliseconds
+
+    // Anti-ghosting Configuration
+    optional bool antiGhostingSides = 20;     // Prevent side sensors when center active
+    optional bool antiGhostingCenter = 21;    // Prevent center sensors when sides active
 }
 
 message AddonOptions
@@ -944,7 +953,7 @@ message AddonOptions
     optional GamepadUSBHostOptions gamepadUSBHostOptions = 28;
     optional TG16Options tg16Options = 29;
     optional HETriggerOptions heTriggerOptions = 30;
-    optional PiezoOptions piezoOptions = 31;
+    optional TaikoAddonOptions taikoAddonOptions = 31;
 
 }
 

@@ -118,7 +118,7 @@ void GP2040::setup() {
 	addons.LoadAddon(new RotaryEncoderInput());
 	addons.LoadAddon(new PCF8575Addon());
 	addons.LoadAddon(new TG16padInput());
-	addons.LoadAddon(new PiezoInput());
+	addons.LoadAddon(new Taiko());
 
 
 	// Input override addons
